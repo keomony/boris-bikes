@@ -9,7 +9,7 @@ describe DockingStation do
 
  it { should respond_to(:dock).with(1).argument}
 
- it "returns docked bikes" do
+ it "returns docked bike" do
    bike = Bike.new
    subject.dock(bike)
    expect(subject.bike).to eq bike
