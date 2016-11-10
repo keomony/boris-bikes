@@ -15,8 +15,12 @@ class DockingStation
   end
 
   def dock(bike)
-    fail "Dock is full" unless (@bikes.count < @dock_capacity)
+    fail "Dock is full" if dock_full?
     @bikes << bike
     return bike
+  end
+
+  def dock_full?
+    @bikes.count == @dock_capacity
   end
 end
