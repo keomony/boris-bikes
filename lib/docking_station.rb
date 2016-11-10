@@ -2,7 +2,7 @@ require_relative 'bike'
 
 class DockingStation
   attr_reader :bike
-  attr_reader :bikes
+  #attr_accessor :bikes
 
   def initialize(dock_capacity = 20)
     @dock_capacity = dock_capacity
