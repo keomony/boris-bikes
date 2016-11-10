@@ -10,7 +10,7 @@ class DockingStation
   end
 
   def release_bike
-    fail "There are no bikes available" unless (@bikes.count > 0)
+    fail "There are no bikes available" if dock_empty?
     return @bikes.shift
   end
 
@@ -20,6 +20,10 @@ class DockingStation
     return bike
   end
 
+  private
+  def dock_empty?
+    @bikes.count == 0
+  end
   def dock_full?
     @bikes.count == @dock_capacity
   end
