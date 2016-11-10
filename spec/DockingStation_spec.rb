@@ -1,5 +1,5 @@
 require "docking_station"
-require "bike"
+#require "bike"
 
 describe DockingStation do
 
@@ -18,22 +18,26 @@ describe DockingStation do
   it { is_expected.to respond_to(:bike) }
 
   # new test: check that the bike docked is the one we are viewing
-  it 'docks a bike' do
+  describe '#dock' do
     bike = Bike.new
-    expect(subject.dock(bike)).to eq bike
-  end
 
-  it 'views docked bikes' do
-    bike = Bike.new
-    subject.dock(bike)
-    expect(subject.bike).to eq bike
-  end
+    it 'docks a bike' do
+      expect(subject.dock(bike)).to eq bike
+    end
 
-  describe 'release_bike' do
-    it 'raises an error when there are no bikes available' do
-      expect { subject.release_bike }.to raise_error "There are no bikes available" 
+    it 'views docked bikes' do
+      subject.dock(bike)
+      expect(subject.bike).to eq bike
+    end
+
+    it 'accepts only one bike in a dock' do
+      expect { 2.times {subject.dock(bike)} }.to raise_error "Dock is full"
     end
   end
-
+  describe '#release_bike' do
+    it 'raises an error when there are no bikes available' do
+      expect { subject.release_bike }.to raise_error "There are no bikes available"
+    end
+  end
 
 end
