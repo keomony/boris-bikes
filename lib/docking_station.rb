@@ -6,17 +6,17 @@ class DockingStation
 
   def initialize(dock_capacity = 20)
     @dock_capacity = dock_capacity
-    @bikes = 0
+    @bikes = []
   end
 
   def release_bike
-    fail "There are no bikes available" unless @bike
-    @bike
+    fail "There are no bikes available" unless (@bikes.count > 0)
+    return @bikes.shift
   end
 
   def dock(bike)
-    fail "Dock is full" unless (@bikes < @dock_capacity)
-    @bikes += 1
-    @bike = bike
+    fail "Dock is full" unless (@bikes.count < @dock_capacity)
+    @bikes << bike
+    return bike
   end
 end

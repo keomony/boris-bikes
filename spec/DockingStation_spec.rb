@@ -26,8 +26,7 @@ describe DockingStation do
     end
 
     it 'views docked bikes' do
-      subject.dock(bike)
-      expect(subject.bike).to eq bike
+      expect(subject.dock(bike)).to eq bike
     end
 
     it 'accepts only one bike in a dock' do
