@@ -15,7 +15,7 @@ describe DockingStation do
   it { is_expected.to respond_to(:dock).with(1).argument }
 
   # does station respond to method bike
-  it { is_expected.to respond_to(:bike) }
+  it { is_expected.to respond_to(:bikes) }
 
   # new test: check that the bike docked is the one we are viewing
   describe '#dock' do
