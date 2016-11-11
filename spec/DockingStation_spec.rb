@@ -29,9 +29,10 @@ describe DockingStation do
       expect(subject.dock(bike)).to eq bike
     end
 
-    it 'accepts only one bike in a dock' do
+    it 'accepts only 20 bikes in a dock' do
       expect {((DockingStation::DEFAULT_CAPACITY)+1).times {subject.dock(Bike.new)} }.to raise_error "Dock is full"
     end
+
   end
 
   describe '#release_bike' do
