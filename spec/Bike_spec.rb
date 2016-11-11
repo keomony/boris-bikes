@@ -12,5 +12,7 @@ describe Bike do
     subject.break!
     expect(subject.working?).to eq false
   end
-
+  it 'should return a bike when break! is called' do
+    expect(subject.break!).to be_kind_of Bike
+  end
 end
